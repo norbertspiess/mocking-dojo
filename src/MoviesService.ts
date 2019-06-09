@@ -1,8 +1,8 @@
-import Movie from "../model/Movie";
+import Movie from "./model/Movie";
 import ILogging from "typings/ILogging";
 import IResource from "typings/IResource";
-import MoviesDB from "./MoviesDB";
-import RemoteLoggingService from "./RemoteLoggingService";
+import MoviesDB from "./resources/MoviesDB";
+import RemoteLoggingService from "./resources/RemoteLoggingService";
 
 export default class MoviesService {
   private db: IResource;

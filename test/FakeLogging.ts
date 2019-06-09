@@ -1,4 +1,4 @@
-import ILogging from "typings/ILogging";
+import ILogging from "../src/typings/ILogging";
 
 export default class FakeLogging implements ILogging {
   async notify(msg: String): Promise<void> {

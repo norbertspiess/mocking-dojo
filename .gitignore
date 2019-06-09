@@ -31,13 +31,13 @@ bower_components
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
+dist/
 
 # Dependency directories
 node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files
-typings/
 
 # Optional npm cache directory
 .npm
@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+
+.idea/*
+*.iml

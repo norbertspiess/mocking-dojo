@@ -1,5 +1,5 @@
 import MoviesDB from '../src/resources/MoviesDB'
-import MoviesService from "../src/MoviesService";
+import MovieService from "../src/MovieService";
 import Movie from "../src/model/Movie";
 import RemoteLoggingService from '../src/resources/RemoteLoggingService';
 
@@ -10,31 +10,24 @@ import RemoteLoggingService from '../src/resources/RemoteLoggingService';
  */
 
 
-let service: MoviesService = new MoviesService();
+const service: MovieService = new MovieService();
 
 describe('Movies Service', () => {
+
+  afterEach(() => jest.resetAllMocks());
 
   describe('create', () => {
     it('should call logging and database', async () => {
       // GIVEN
       jest.spyOn(RemoteLoggingService.prototype, 'notify');
-      // //  manipulate the spy / mock
-      //     .mockImplementationOnce(async () => console.log('first logging call'))
-      //     .mockImplementationOnce(async () => console.log('second logging call'));
 
       const dbCreate =
-          // spy on and control a specific object
           jest.spyOn(MoviesDB.prototype, 'create');
-      // .mockImplementationOnce(async (movie) => {
-      //   console.log('mock db creation');
-      //   return movie
-      // });
 
       // WHEN
       await service.create(new Movie('Transformers (2007)', 7.1));
 
       // THEN
-      // spy on concrete objects
       expect(dbCreate).toHaveBeenCalled();
       expect(RemoteLoggingService.prototype.notify).toHaveBeenCalledTimes(2);
     });
@@ -53,18 +46,9 @@ describe('Movies Service', () => {
   });
 
   describe('findAllSortedByRating should', () => {
-
     it('not create anything on the database', async () => {
-      expect(jest.spyOn(MoviesDB.prototype, 'create')).not.toHaveBeenCalled();
+      await service.findAllSortedByRating();
       expect(jest.spyOn(service, 'create')).not.toHaveBeenCalled();
-    });
-
-    it('sort movies descending as default', async () => {
-
-    });
-
-    it('sort movies ascending, if specified', async () => {
-
     });
   });
 

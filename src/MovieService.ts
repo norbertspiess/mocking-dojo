@@ -4,14 +4,12 @@ import IResource from "typings/IResource";
 import MoviesDB from "./resources/MoviesDB";
 import RemoteLoggingService from "./resources/RemoteLoggingService";
 
-export default class MoviesService {
-  private db: IResource;
-  private logger: ILogging;
+export default class MovieService {
 
-  constructor() {
-    this.db = new MoviesDB();
-    this.logger = new RemoteLoggingService();
-  }
+  private db: IResource = new MoviesDB();
+  private logger: ILogging = new RemoteLoggingService();
+
+  constructor() {}
 
   async create(movie: Movie): Promise<Movie> {
     await this.logger.notify('movie creation request');

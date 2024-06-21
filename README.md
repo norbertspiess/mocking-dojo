@@ -1,4 +1,4 @@
-# Dojo 19-24
+# Dojo for practicing mocking
 Mocking dojo (not only) with Jest
 
 # Theory
